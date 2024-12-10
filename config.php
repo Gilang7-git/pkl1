@@ -6,9 +6,8 @@ $username = 'postgres';
 $password = 'gilang88';
 
 try {
-    $koneksi = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $username, $password);
-    $koneksi->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $koneksi = pg_connect("host=localhost dbname=$dbname user=$username password=$password");
+    echo "Koneksi Berhasil!";
 } catch(PDOException $e) {
-    die("Koneksi gagal: " . $e->getMessage());
+    echo "Koneksi gagal: " . $e->getMessage();
 }
-?>
